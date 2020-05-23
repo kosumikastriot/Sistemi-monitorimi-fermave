@@ -22,7 +22,7 @@
             <i class="ti-menu"></i>
           </a>
           <a [routerLink]="['/dashboard/default/']">
-            <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+            Monitorimi Fermes
           </a>
           <a href="javascript:" class="mobile-options" (click)="toggleHeaderNavRight()">
             <i class="ti-more"></i>
@@ -33,58 +33,8 @@
             <li>
               <div class="sidebar_toggle"><a href="javascript:"><i class="ti-menu"></i></a></div>
             </li>
-            <li class="header-search">
-              <div id="main-search" class="main-search morphsearch-search">
-                <div class="input-group">
-                  <span class="input-group-prepend search-close" (click)="searchOff()"><i class="ti-close input-group-text"></i></span>
-                  <input class="form-control" [style.width]="searchWidthString">
-                  <span class="input-group-append search-btn" (click)="searchOn()"><i class="ti-search input-group-text"></i></span>
-                </div>
-              </div>
-            </li>
-            <li appToggleFullScreen>
-              <a href="javascript:">
-                <i class="ti-fullscreen"></i>
-              </a>
-            </li>
-          </ul>
-          <ul [@mobileHeaderNavRight]="navRight" [ngClass]="navRight" class="nav-right">
-            <li (clickOutside)="notificationOutsideClick('profile')" class="user-profile header-notification" [ngClass]="profileNotificationClass" (click)="toggleProfileNotification()">
-              <a href="javascript:">
-                <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                <span>John Doe</span>
-                <i class="ti-angle-down"></i>
-              </a>
-              <ul [@notificationBottom]="profileNotification" class="show-notification profile-notification">
-                <li>
-                  <a href="javascript:">
-                    <i class="ti-settings"></i> Settings
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['/user/profile/']">
-                    <i class="ti-user"></i> Profile
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['/email/inbox/']">
-                    <i class="ti-email"></i> My Messages
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['/authentication/lock-screen/']">
-                    <i class="ti-lock"></i> Lock Screen
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['/authentication/login/']">
-                    <i class="ti-layout-sidebar-left"></i> Logout
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
 
+          </ul>
         </div>
       </div>
     </nav>
@@ -185,7 +135,6 @@
               <div class="page-wrapper">
                 <router-outlet>
                   <app-title></app-title>
-                  <app-breadcrumbs></app-breadcrumbs>
                   <app-spinner></app-spinner>
                 </router-outlet>
               </div>

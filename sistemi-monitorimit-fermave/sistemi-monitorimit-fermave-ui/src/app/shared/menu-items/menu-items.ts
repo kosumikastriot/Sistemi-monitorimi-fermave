@@ -32,14 +32,42 @@ export interface Menu {
 
 const MENUITEMS = [
   {
-    label: 'My Panel',
+    label: 'Paneli',
     main: [
       {
         state: 'dashboard',
         short_label: 'S',
-        name: 'Sample Page',
+        name: 'Dashboard',
         type: 'link',
-        icon: 'ti-layout-sidebar-left'
+        icon: 'ti-dashboard'
+      },
+      {
+        state: 'pajisjet',
+        short_label: 'S',
+        name: 'Pajsijet',
+        type: 'link',
+        icon: 'ti-panel'
+      },
+      {
+        state: 'senzoret',
+        short_label: 'S',
+        name: 'Senzoret',
+        type: 'link',
+        icon: 'ti-signal'
+      },
+      {
+        state: 'konfigurimet',
+        short_label: 'S',
+        name: 'Konfigurimet',
+        type: 'link',
+        icon: 'ti-file'
+      },
+      {
+        state: 'simulimi',
+        short_label: 'S',
+        name: 'Simulimi',
+        type: 'link',
+        icon: 'ti-desktop'
       }
     ]
   }
