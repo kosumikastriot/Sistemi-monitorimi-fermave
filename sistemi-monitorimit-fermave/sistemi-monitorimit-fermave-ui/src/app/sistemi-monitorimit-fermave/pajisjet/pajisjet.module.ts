@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './dashboard.component';
-import {DashboardRoutingModule} from './dashboard-routing.module';
+import { PajisjetComponent } from './pajisjet.component';
+import {PajisjetRoutingModule} from './pajisjet-routing.module';
 import {SharedModule} from '../../shared/shared.module';
 import {ChartModule} from 'angular2-chartjs';
 
 @NgModule({
   imports: [
     CommonModule,
-    DashboardRoutingModule,
+    PajisjetRoutingModule,
     SharedModule,
     ChartModule
   ],
-  declarations: [DashboardComponent]
+  declarations: [PajisjetComponent]
 })
-export class DashboardModule { }
+export class PajisjetModule { }

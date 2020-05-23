@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: './sistemi-monitorimit-fermave/dashboard/dashboard.module#DashboardModule'
+      },
+      {
+        path: 'pajisjet',
+        loadChildren: './sistemi-monitorimit-fermave/pajisjet/pajisjet.module#PajisjetModule'
       }
     ]
   }
