@@ -9,12 +9,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'simple-page',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
       },
       {
-        path: 'simple-page',
-        loadChildren: './theme/simple-page/simple-page.module#SimplePageModule'
+        path: 'dashboard',
+        loadChildren: './sistemi-monitorimit-fermave/dashboard/dashboard.module#DashboardModule'
       }
     ]
   }

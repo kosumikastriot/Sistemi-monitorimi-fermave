@@ -35,7 +35,7 @@ const MENUITEMS = [
     label: 'My Panel',
     main: [
       {
-        state: 'simple-page',
+        state: 'dashboard',
         short_label: 'S',
         name: 'Sample Page',
         type: 'link',

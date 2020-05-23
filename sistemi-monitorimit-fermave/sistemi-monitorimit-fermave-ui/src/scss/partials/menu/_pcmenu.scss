@@ -3782,17 +3782,17 @@ body {
 
     .pcoded-header {
         .navbar-logo {
-            // @each $value in $logo-theme {
-            //     $i: index($logo-theme, $value);
+            // @each $value in $logo-sistemi-monitorimit-fermave {
+            //     $i: index($logo-sistemi-monitorimit-fermave, $value);
             //
-            //     &[logo-theme="theme#{$i}"] {
+            //     &[logo-sistemi-monitorimit-fermave="sistemi-monitorimit-fermave#{$i}"] {
             //         background-color: $value;
             //     }
             // }
             // @each $value in $logo-themelight {
             //     $i: index($logo-themelight, $value);
             //
-            //     &[logo-theme="themelight#{$i}"] {
+            //     &[logo-sistemi-monitorimit-fermave="themelight#{$i}"] {
             //         background-color: $value;
             //     }
             // }
@@ -4396,10 +4396,10 @@ body {
                 background: $value;
             }
         }
-        // @each $value in $logo-theme {
-        //     $i: index($logo-theme, $value);
+        // @each $value in $logo-sistemi-monitorimit-fermave {
+        //     $i: index($logo-sistemi-monitorimit-fermave, $value);
         //
-        //     &[logo-theme="theme#{$i}"] {
+        //     &[logo-sistemi-monitorimit-fermave="sistemi-monitorimit-fermave#{$i}"] {
         //         .head {
         //             &:after {
         //                 background: $value;
@@ -4410,7 +4410,7 @@ body {
         // @each $value in $logo-themelight {
         //     $i: index($logo-themelight, $value);
         //
-        //     &[logo-theme="themelight#{$i}"] {
+        //     &[logo-sistemi-monitorimit-fermave="themelight#{$i}"] {
         //         .head{
         //             &:after{
         //                 background: $value;

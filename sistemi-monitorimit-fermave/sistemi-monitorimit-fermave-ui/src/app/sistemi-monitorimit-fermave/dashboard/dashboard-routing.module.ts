@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SimplePageComponent} from './simple-page.component';
+import {DashboardComponent} from './dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SimplePageComponent,
+    component: DashboardComponent,
     data: {
-      title: 'Sample Page',
+      title: 'Dashboard',
       icon: 'icon-layout-sidebar-left',
       caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - sample page',
       status: true
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SimplePageRoutingModule { }
+export class DashboardRoutingModule { }
