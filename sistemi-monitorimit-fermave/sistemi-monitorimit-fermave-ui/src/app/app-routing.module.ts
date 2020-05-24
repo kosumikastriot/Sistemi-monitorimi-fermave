@@ -19,6 +19,18 @@ const routes: Routes = [
       {
         path: 'pajisjet',
         loadChildren: './sistemi-monitorimit-fermave/pajisjet/pajisjet.module#PajisjetModule'
+      },
+      {
+        path: 'senzoret',
+        loadChildren: './sistemi-monitorimit-fermave/senzoret/senzoret.module#SenzoretModule'
+      },
+      {
+        path: 'konfigurimet',
+        loadChildren: './sistemi-monitorimit-fermave/konfigurimet/konfigurimet.module#KonfigurimetModule'
+      },
+      {
+        path: 'simulimi',
+        loadChildren: './sistemi-monitorimit-fermave/simulimi/simulimi.module#SimulimiModule'
       }
     ]
   }
