@@ -3,7 +3,6 @@ package com.ubt.sistemimonitorimitfermave.entity;
 import com.ubt.sistemimonitorimitfermave.entity.type.Status;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 
