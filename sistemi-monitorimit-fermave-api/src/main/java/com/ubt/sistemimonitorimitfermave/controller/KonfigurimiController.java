@@ -1,15 +1,16 @@
 package com.ubt.sistemimonitorimitfermave.controller;
 
 import com.ubt.sistemimonitorimitfermave.data.KonfigurimiDTO;
+import com.ubt.sistemimonitorimitfermave.data.KonfigurimiUpdateDTO;
 import com.ubt.sistemimonitorimitfermave.service.KonfigurimiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin
@@ -27,5 +28,21 @@ public class KonfigurimiController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(result);
         }
         return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("")
+    public ResponseEntity update(@RequestBody @Valid KonfigurimiUpdateDTO konfigurimiUpdateDTO, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(bindingResult.getFieldErrors());
+        }
+        if(konfigurimiService.update(konfigurimiUpdateDTO) == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+        }
+
+        if(konfigurimiService.update(konfigurimiUpdateDTO) != null){
+            return ResponseEntity.ok(true);
+        }
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
     }
 }
