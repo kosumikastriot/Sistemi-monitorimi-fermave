@@ -1,6 +1,7 @@
 package com.ubt.sistemimonitorimitfermave.service;
 
 import com.ubt.sistemimonitorimitfermave.data.KonfigurimiDTO;
+import com.ubt.sistemimonitorimitfermave.data.KonfigurimiUpdateDTO;
 import com.ubt.sistemimonitorimitfermave.entity.Konfigurimi;
 import com.ubt.sistemimonitorimitfermave.repository.KonfigurimiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,29 @@ public class KonfigurimiService {
 
         return konfigurimiDTOS;
     }
+
+    public Konfigurimi update(KonfigurimiUpdateDTO konfigurimiUpdateDTO){
+        Konfigurimi result = null;
+        if(konfigurimiUpdateDTO.getVleraMin() > konfigurimiUpdateDTO.getVleraMax()){
+            return result;
+        }
+
+        try{
+            Konfigurimi konfigurimi = konfigurimiRepository.getOne(konfigurimiUpdateDTO.getId());
+
+            konfigurimi.setVleraMax(konfigurimiUpdateDTO.getVleraMax());
+            konfigurimi.setVleraMin(konfigurimiUpdateDTO.getVleraMin());
+
+            konfigurimiRepository.save(konfigurimi);
+            result = konfigurimi;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+
 
 
 }
