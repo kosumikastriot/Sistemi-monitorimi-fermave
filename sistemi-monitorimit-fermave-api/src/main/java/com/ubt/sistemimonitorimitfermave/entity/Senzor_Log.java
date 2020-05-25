@@ -1,10 +1,12 @@
 package com.ubt.sistemimonitorimitfermave.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -21,5 +23,6 @@ public class Senzor_Log {
 
     private Double vlera;
 
-    private LocalDateTime koha;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date koha;
 }
