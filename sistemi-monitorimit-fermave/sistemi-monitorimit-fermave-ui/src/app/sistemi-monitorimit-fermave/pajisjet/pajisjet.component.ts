@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
+import * as SockJS from 'sockjs-client';
+import * as Stomp from 'stompjs';
+
 
 @Component({
   selector: 'app-simple-page',
@@ -9,11 +12,34 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PajisjetComponent implements OnInit {
 
+  //Websocket
+  url = 'http://localhost:8080/monitorimi-fermave-ws'
+  client: any;
+
   constructor() { }
 
   ngOnInit() {
 
+    this.connection();
+
   }
+
+  connection(){
+    let ws = new SockJS (this.url);
+    this.client = Stomp.over(ws);
+    let that = this;
+
+    this.client.connect({}, function(frame) {
+      that.client.subscribe('/topic/pajisjet', (message) => {
+
+        if(message.body) {
+          let json = JSON.parse(message.body);
+
+        }
+      });
+    });
+  }
+
 
 
 }
