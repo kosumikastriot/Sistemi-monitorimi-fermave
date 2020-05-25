@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-
+import * as SockJS from 'sockjs-client';
+import * as Stomp from 'stompjs';
+// @ts-ignore
+import {DashboardDto} from '../../classes/simulimi/dashboard-dto';
 
 @Component({
   selector: 'app-simple-page',
@@ -8,14 +11,36 @@ import {Component, OnInit} from '@angular/core';
     '../../../assets/icon/icofont/css/icofont.scss']
 })
 export class DashboardComponent implements OnInit {
+  //Websocket
+  url = 'http://localhost:8080/monitorimi-fermave-ws'
+  client: any;
+  dashboardData: DashboardDto;
+
   powerCardData: any;
   powerCardOption: any;
 
   constructor() { }
 
   ngOnInit() {
+    this.connection();
     this.powerCardData = this.gurubuildchartjs('#4099ff', [10, 25, 35, 20, 10, 20, 15, 45, 15, 10], null);
     this.powerCardOption = this.gurubuildchartoption();
+  }
+
+  connection(){
+    let ws = new SockJS (this.url);
+    this.client = Stomp.over(ws);
+    let that = this;
+
+    this.client.connect({}, function(frame) {
+      that.client.subscribe('/topic/dashboard', (message) => {
+
+        if(message.body) {
+          let json = JSON.parse(message.body);
+          that.dashboardData = json;
+        }
+      });
+    });
   }
 
   gurubuildchartjs(a, b, f) {

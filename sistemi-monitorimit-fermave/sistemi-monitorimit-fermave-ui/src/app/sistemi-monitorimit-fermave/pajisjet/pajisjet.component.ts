@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+// @ts-ignore
+import {PajisjaDto} from '../../classes/pajisja/pajisja-dto';
 
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
-
 
 @Component({
   selector: 'app-simple-page',
@@ -15,6 +16,7 @@ export class PajisjetComponent implements OnInit {
   //Websocket
   url = 'http://localhost:8080/monitorimi-fermave-ws'
   client: any;
+  pajisjet: Array<PajisjaDto>;
 
   constructor() { }
 
@@ -34,7 +36,7 @@ export class PajisjetComponent implements OnInit {
 
         if(message.body) {
           let json = JSON.parse(message.body);
-
+          that.pajisjet = json;
         }
       });
     });

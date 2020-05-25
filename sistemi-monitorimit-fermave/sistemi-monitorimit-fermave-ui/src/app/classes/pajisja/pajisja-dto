@@ -1,0 +1,9 @@
+import {Zona} from './zona';
+
+export class PajisjaDto {
+  id: Number;
+  emri: String;
+  foto: String;
+  zona: Zona;
+  status: String;
+}

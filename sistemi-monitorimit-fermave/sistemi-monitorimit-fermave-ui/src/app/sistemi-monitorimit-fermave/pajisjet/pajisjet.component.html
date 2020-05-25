@@ -1,45 +1,21 @@
 <div class="page-body">
   <div class="row simple-cards users-card">
-    <div class="col-md-12 col-xl-4">
+
+    <div class="col-md-12 col-xl-4" *ngFor="let pajisja of pajisjet">
       <div class="card user-card">
         <div class="card-header-img">
-          <img class="img-fluid img-200" src="assets/images/pajisjet/ventilator.jpg" alt="card-img">
-          <h4>Ventilatori 1</h4>
-          <h5 style="color: green">Aktiv</h5>
+          <img *ngIf="pajisja.foto == null" class="img-fluid img-200" src="assets/images/no-image.jpg" alt="card-img">
+          <img *ngIf="pajisja.foto != null" class="img-fluid img-200" [src]="pajisja.foto" alt="card-img">
+          <h4>{{pajisja.emri}}</h4>
+          <h5 *ngIf="pajisja.status == 'ACTIVE'" style="color: green">{{pajisja.status}}</h5>
+          <h5 *ngIf="pajisja.status == 'INACTIVE'" style="color: red">{{pajisja.status}}</h5>
         </div>
-        <p>Zona 1</p>
+        <p>{{pajisja.zona.emri}}</p>
         <div>
           <button type="button" class="btn btn-primary waves-effect waves-light">Ndalo</button>
         </div>
       </div>
     </div>
 
-    <div class="col-md-12 col-xl-4">
-      <div class="card user-card">
-        <div class="card-header-img">
-          <img class="img-fluid img-200" src="assets/images/pajisjet/ventilator.jpg" alt="card-img">
-          <h4>Ventilatori 2</h4>
-          <h5 style="color: red">Ndaluar</h5>
-        </div>
-        <p>Zona 1</p>
-        <div>
-          <button type="button" class="btn btn-primary waves-effect waves-light">Aktivizo</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-12 col-xl-4">
-      <div class="card user-card">
-        <div class="card-header-img">
-          <img class="img-fluid img-200" src="assets/images/pajisjet/ventilator.jpg" alt="card-img">
-          <h4>Ventilatori 3</h4>
-          <h5 style="color: red">Ndaluar</h5>
-        </div>
-        <p>Zona 1</p>
-        <div>
-          <button type="button" class="btn btn-primary waves-effect waves-light">Aktivizo</button>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
