@@ -58,7 +58,7 @@ const MENUITEMS = [
       {
         state: 'konfigurimet',
         short_label: 'S',
-        name: 'Konfigurimet',
+        name: 'Konfigurimi',
         type: 'link',
         icon: 'ti-file'
       },
