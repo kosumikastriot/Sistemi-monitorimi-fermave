@@ -3,6 +3,7 @@ package com.ubt.sistemimonitorimitfermave.ws;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ubt.sistemimonitorimitfermave.data.PajisjaDTO;
+import com.ubt.sistemimonitorimitfermave.data.SenzorLogDTO;
 import com.ubt.sistemimonitorimitfermave.data.SenzoriDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
@@ -32,4 +33,14 @@ public class MessageManager {
             e.printStackTrace();
         }
     }
+
+    public void sendMessageSenzoratLog(List<SenzorLogDTO> getAllSenzorLogs) {
+        try {
+            messagingTemplate.convertAndSend("/topic/senzorLogs", new ObjectMapper().writeValueAsString(getAllSenzorLogs));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

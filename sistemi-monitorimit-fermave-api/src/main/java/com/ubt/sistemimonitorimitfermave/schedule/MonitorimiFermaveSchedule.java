@@ -1,6 +1,7 @@
 package com.ubt.sistemimonitorimitfermave.schedule;
 
 import com.ubt.sistemimonitorimitfermave.service.PajisjaService;
+import com.ubt.sistemimonitorimitfermave.service.SenzorLogService;
 import com.ubt.sistemimonitorimitfermave.service.SenzoriService;
 import com.ubt.sistemimonitorimitfermave.ws.MessageManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class MonitorimiFermaveSchedule {
     @Autowired
     private SenzoriService senzoriService;
 
+    @Autowired
+    private SenzorLogService senzorLogService;
+
     @Scheduled(fixedDelay = 500)
     public void getPajisjet(){
         messageManager.sendMessagePajisjet(pajisjaService.getAll());
@@ -27,5 +31,10 @@ public class MonitorimiFermaveSchedule {
     @Scheduled(fixedDelay = 500)
     public void getSenzors(){
         messageManager.sendMessageSenzorat(senzoriService.getAll());
+    }
+
+    @Scheduled(fixedDelay = 500)
+    public void getSenzorLog(){
+        messageManager.sendMessageSenzoratLog(senzorLogService.getAll());
     }
 }
