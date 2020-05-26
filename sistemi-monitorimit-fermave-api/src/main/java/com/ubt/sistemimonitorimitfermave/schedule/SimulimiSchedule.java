@@ -134,34 +134,29 @@ public class SimulimiSchedule {
 
     @Scheduled(fixedDelay = 1000)
     public void getAmbientiSimulimi(){
-//        if(started){
-//            if(ambientiHelper == null){
-//                ambientiHelper = ambientiMin;
-//            }
-//
-//            ambientiHelper -=2;
-//            senzorLogService.create(4l,ambientiHelper);
-//
-//            dashboardDTO.setAmbienti(ambientiHelper);
-//
-//            //////////////////////////////////
-//
-//
-//
-//
-//            messageManager.sendMessageDashboard(dashboardDTO);
-//
-//            Konfigurimi konfigurimi = konfigurimiService.getOne(3l);
-//
-//            if(ndricimiHelper > konfigurimi.getVleraMax()){
-//                pajisjaService.ndalo(4l);
-//                ndricimiHelper = -2.0;
-//            }else if(ndricimiHelper < konfigurimi.getVleraMin()){
-//                pajisjaService.aktivizo(4l);
-//                ndricimiHelper +=1.0;
-//            }
-//
-//        }
+        if(started){
+            if(ambientiHelper == null){
+                ambientiHelper = ambientiMin;
+            }
+
+            ambientiHelper -=2;
+            senzorLogService.create(4l,ambientiHelper);
+
+            dashboardDTO.setAmbienti(ambientiHelper);
+
+            messageManager.sendMessageDashboard(dashboardDTO);
+
+            Konfigurimi konfigurimi = konfigurimiService.getOne(4l);
+
+            if(ambientiHelper > konfigurimi.getVleraMax()){
+                pajisjaService.ndalo(1l);
+                ambientiHelper = -2.0;
+            }else if(ambientiHelper < konfigurimi.getVleraMin()){
+                pajisjaService.aktivizo(1l);
+                ambientiHelper +=1.0;
+            }
+
+        }
     }
 
     @Scheduled(fixedDelay = 3000)
