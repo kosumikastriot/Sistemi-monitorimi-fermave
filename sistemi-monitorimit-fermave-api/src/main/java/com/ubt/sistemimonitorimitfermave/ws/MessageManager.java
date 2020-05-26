@@ -2,6 +2,7 @@ package com.ubt.sistemimonitorimitfermave.ws;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ubt.sistemimonitorimitfermave.data.DashboardDTO;
 import com.ubt.sistemimonitorimitfermave.data.PajisjaDTO;
 import com.ubt.sistemimonitorimitfermave.data.SenzorLogDTO;
 import com.ubt.sistemimonitorimitfermave.data.SenzoriDTO;
@@ -34,6 +35,15 @@ public class MessageManager {
         }
     }
 
+    public void sendMessageDashboard(DashboardDTO getDashboard) {
+        try {
+            messagingTemplate.convertAndSend("/topic/dashboard", new ObjectMapper().writeValueAsString(getDashboard));
+
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void sendMessageSenzoratLog(List<SenzorLogDTO> getAllSenzorLogs) {
         try {
             messagingTemplate.convertAndSend("/topic/senzorLogs", new ObjectMapper().writeValueAsString(getAllSenzorLogs));
@@ -41,6 +51,5 @@ public class MessageManager {
             e.printStackTrace();
         }
     }
-
 
 }
