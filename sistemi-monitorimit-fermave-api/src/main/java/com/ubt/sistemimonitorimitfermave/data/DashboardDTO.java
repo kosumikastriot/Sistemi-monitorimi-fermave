@@ -8,4 +8,5 @@ import lombok.Setter;
 public class DashboardDTO {
 
     private Double temperatura;
+    private Double lageshtijaAjrit;
 }

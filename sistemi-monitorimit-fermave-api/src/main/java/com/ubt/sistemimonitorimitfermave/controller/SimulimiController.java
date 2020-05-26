@@ -18,4 +18,9 @@ public class SimulimiController {
         return ResponseEntity.ok().body(simulimiService.simuloTemeraturen(started, min, max));
     }
 
+    @PostMapping("/LageshtijaAjrit")
+    public ResponseEntity simuloLagshtiaAjrit(@RequestParam(value = "vlera", required = true) Double vlera){
+        return ResponseEntity.ok().body(simulimiService.simuloLageshtiaAjrit(vlera));
+    }
+
 }
