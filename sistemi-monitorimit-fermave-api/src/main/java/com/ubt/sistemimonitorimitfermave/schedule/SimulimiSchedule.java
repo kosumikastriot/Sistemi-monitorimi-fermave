@@ -19,13 +19,14 @@ public class SimulimiSchedule {
 
     @Getter
     @Setter
-    private Boolean startedTemperatura = true;
+    private Boolean started = true;
 
     @Getter
     @Setter
     private Double minTemperatura = 20.0;
 
     private Double minHelpTemperatura;
+    private Double ndricimiHelper;
 
     @Getter
     @Setter
@@ -33,7 +34,19 @@ public class SimulimiSchedule {
 
     @Getter
     @Setter
-    private Double vleraLageshtiaAjrit = 30.0;
+    private Double vleraLageshtiaAjritMax = 70.0;
+
+    @Getter
+    @Setter
+    private Double vleraLageshtiaAjritMin = 30.0;
+
+    @Getter
+    @Setter
+    private Double ndricimiMax = 70.0;
+
+    @Getter
+    @Setter
+    private Double ndricimiMin = 30.0;
 
     @Autowired
     private MessageManager messageManager;
@@ -47,11 +60,9 @@ public class SimulimiSchedule {
     @Autowired
     private PajisjaService pajisjaService;
 
-
-
     @Scheduled(fixedDelay = 1000)
     public void getTemperaturaSimulimi(){
-        if (startedTemperatura){
+        if (started){
             if (minHelpTemperatura == null){
                 minHelpTemperatura = minTemperatura;
             }
@@ -78,12 +89,45 @@ public class SimulimiSchedule {
 
     }
 
+    @Scheduled
+    public void getNdricimiSimulimi(){
+        if(started){
+            if(ndricimiHelper == null){
+                ndricimiHelper = ndricimiMin;
+            }
+
+            ndricimiHelper -=2;
+            senzorLogService.create(3l,ndricimiHelper);
+
+            dashboardDTO.setNdricimi(ndricimiHelper);
+            messageManager.sendMessageDashboard(dashboardDTO);
+
+            Konfigurimi konfigurimi = konfigurimiService.getOne(3l);
+
+            if(ndricimiHelper > konfigurimi.getVleraMax()){
+                pajisjaService.ndalo(4l);
+                ndricimiHelper = -2.0;
+            }else if(ndricimiHelper < konfigurimi.getVleraMin()){
+                pajisjaService.aktivizo(4l);
+                ndricimiHelper +=1.0;
+            }
+
+        }
+    }
+
     @Scheduled(fixedDelay = 3000)
     public void getLageshtiaAjritSimulimi(){
-        Double vleraLageshtiaAjritRandom = (Double) (Math.random()*100);
-        dashboardDTO.setLageshtijaAjrit(vleraLageshtiaAjritRandom);
-        //senzorLogService.create(2l,vleraLageshtiaAjritRandom);
-        messageManager.sendMessageDashboard(dashboardDTO);
+        if(started){
+            Double vleraLageshtiaAjritRandom = getRandomInteger(vleraLageshtiaAjritMax,vleraLageshtiaAjritMin);
+            dashboardDTO.setLageshtijaAjrit(vleraLageshtiaAjritRandom);
+            senzorLogService.create(2l,vleraLageshtiaAjritRandom);
+            messageManager.sendMessageDashboard(dashboardDTO);
+        }
+
+    }
+
+    public Double getRandomInteger(Double maximum, Double minimum){
+        return ((Double) (Math.random()*(maximum - minimum))) + minimum;
     }
 
 }
