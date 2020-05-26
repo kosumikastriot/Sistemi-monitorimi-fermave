@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class KonfigurimiService {
@@ -59,6 +60,21 @@ public class KonfigurimiService {
         }
 
         return result;
+    }
+
+    public Konfigurimi getOne(Long konfigurimiId){
+        Konfigurimi konfigurimi = null;
+        try {
+            Optional<Konfigurimi> optionalKonfigurimi = konfigurimiRepository.findById(1l);
+            if (optionalKonfigurimi.isPresent()){
+                konfigurimi = optionalKonfigurimi.get();
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return konfigurimi;
     }
 
 

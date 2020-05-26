@@ -4,10 +4,14 @@ import com.ubt.sistemimonitorimitfermave.data.PajisjaDTO;
 import com.ubt.sistemimonitorimitfermave.data.SenzorLogDTO;
 import com.ubt.sistemimonitorimitfermave.entity.Pajisja;
 import com.ubt.sistemimonitorimitfermave.entity.Senzor_Log;
+import com.ubt.sistemimonitorimitfermave.entity.Senzori;
 import com.ubt.sistemimonitorimitfermave.repository.SenzorLogRepository;
+import com.ubt.sistemimonitorimitfermave.repository.SenzoriRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +20,9 @@ public class SenzorLogService {
 
     @Autowired
     private SenzorLogRepository senzorLogRepository;
+
+    @Autowired
+    private SenzoriRepository senzoriRepository;
 
     public List<SenzorLogDTO> getAll(){
         List<SenzorLogDTO> senzorLogDTOS = null;
@@ -40,5 +47,26 @@ public class SenzorLogService {
         }
 
         return senzorLogDTOS;
+    }
+
+    public Boolean create(Long senzorId, Double vlera){
+
+        try {
+            Senzor_Log senzor_log = new Senzor_Log();
+
+            LocalDateTime now = LocalDateTime.now();
+
+            Senzori senzori = senzoriRepository.getOne(senzorId);
+
+            senzor_log.setKoha(now);
+            senzor_log.setSenzori(senzori);
+            senzor_log.setVlera(vlera);
+
+            senzorLogRepository.save(senzor_log);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return true;
     }
 }

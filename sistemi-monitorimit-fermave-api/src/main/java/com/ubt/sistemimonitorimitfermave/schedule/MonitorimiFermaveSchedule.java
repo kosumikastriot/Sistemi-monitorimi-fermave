@@ -23,17 +23,17 @@ public class MonitorimiFermaveSchedule {
     @Autowired
     private SenzorLogService senzorLogService;
 
-    @Scheduled(fixedDelay = 500)
+    @Scheduled(fixedDelay = 1000)
     public void getPajisjet(){
         messageManager.sendMessagePajisjet(pajisjaService.getAll());
     }
 
-    @Scheduled(fixedDelay = 500)
+    @Scheduled(fixedDelay = 1000)
     public void getSenzors(){
         messageManager.sendMessageSenzorat(senzoriService.getAll());
     }
 
-    @Scheduled(fixedDelay = 500)
+    @Scheduled(fixedDelay = 1000)
     public void getSenzorLog(){
         messageManager.sendMessageSenzoratLog(senzorLogService.getAll());
     }
