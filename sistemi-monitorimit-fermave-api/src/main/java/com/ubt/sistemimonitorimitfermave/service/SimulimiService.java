@@ -10,21 +10,21 @@ public class SimulimiService {
     @Autowired
     SimulimiSchedule simulimiSchedule;
 
-    public Object simuloTemeraturen(Boolean started, Double min, Double max) {
-
-        if (started){
-            simulimiSchedule.setMinTemperatura(min);
-            simulimiSchedule.setMaxTemperatura(max);
-            simulimiSchedule.setStartedTemperatura(started);
-        }else {
-            simulimiSchedule.setStartedTemperatura(started);
-        }
-
+    public Boolean simuloTemeraturen(Double min, Double max) {
+        simulimiSchedule.setMinTemperatura(min);
+        simulimiSchedule.setMaxTemperatura(max);
         return true;
     }
 
-    public Object simuloLageshtiaAjrit(Double vlera){
-        simulimiSchedule.setVleraLageshtiaAjrit(vlera);
+    public Boolean simuloLageshtiaAjrit(Double min,Double max){
+        simulimiSchedule.setVleraLageshtiaAjritMax(max);
+        simulimiSchedule.setVleraLageshtiaAjritMin(min);
+        return true;
+    }
+
+    public Boolean simuloNdricimin(Double min, Double max){
+        simulimiSchedule.setNdricimiMax(max);
+        simulimiSchedule.setNdricimiMin(min);
         return true;
     }
 }
