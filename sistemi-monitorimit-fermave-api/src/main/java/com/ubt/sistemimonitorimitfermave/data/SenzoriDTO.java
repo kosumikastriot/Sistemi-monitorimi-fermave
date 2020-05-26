@@ -13,5 +13,6 @@ public class SenzoriDTO {
     private String tipi;
     private Zona zona;
     private Status status;
+    private Double vleraFundit;
 
 }
