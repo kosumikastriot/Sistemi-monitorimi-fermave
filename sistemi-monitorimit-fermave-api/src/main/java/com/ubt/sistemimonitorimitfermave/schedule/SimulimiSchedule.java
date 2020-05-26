@@ -89,7 +89,7 @@ public class SimulimiSchedule {
 
     }
 
-    @Scheduled
+    @Scheduled(fixedDelay = 1000)
     public void getNdricimiSimulimi(){
         if(started){
             if(ndricimiHelper == null){
