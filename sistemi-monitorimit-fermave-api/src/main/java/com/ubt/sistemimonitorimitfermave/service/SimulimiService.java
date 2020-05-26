@@ -13,11 +13,11 @@ public class SimulimiService {
     public Object simuloTemeraturen(Boolean started, Double min, Double max) {
 
         if (started){
-            simulimiSchedule.setMin(min);
-            simulimiSchedule.setMax(max);
-            simulimiSchedule.setStarted(started);
+            simulimiSchedule.setMinTemperatura(min);
+            simulimiSchedule.setMaxTemperatura(max);
+            simulimiSchedule.setStartedTemperatura(started);
         }else {
-            simulimiSchedule.setStarted(started);
+            simulimiSchedule.setStartedTemperatura(started);
         }
 
         return true;

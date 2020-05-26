@@ -4,6 +4,7 @@ import com.ubt.sistemimonitorimitfermave.entity.Senzori;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -12,5 +13,5 @@ public class SenzorLogDTO {
     private Long id;
     private Senzori senzori;
     private Double vlera;
-    private Date koha;
+    private LocalDateTime koha;
 }

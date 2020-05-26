@@ -24,5 +24,5 @@ public class Senzor_Log {
     private Double vlera;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date koha;
+    private LocalDateTime koha;
 }
