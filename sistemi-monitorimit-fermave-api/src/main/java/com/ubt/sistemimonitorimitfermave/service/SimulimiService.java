@@ -33,6 +33,7 @@ public class SimulimiService {
     }
 
     public Boolean simuloAmbientin(Double min, Double max){
+        simulimiSchedule.setAmbientiHelper(null);
         simulimiSchedule.setAmbientiMax(max);
         simulimiSchedule.setAmbientiMin(min);
         return true;
