@@ -10,4 +10,5 @@ public class DashboardDTO {
     private Double temperatura;
     private Double lageshtijaAjrit;
     private Double Ndricimi;
+    private Double Ambienti;
 }

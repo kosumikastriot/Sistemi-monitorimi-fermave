@@ -25,8 +25,17 @@ public class SimulimiSchedule {
     @Setter
     private Double minTemperatura = 20.0;
 
+    @Getter
+    @Setter
     private Double minHelpTemperatura;
+
+    @Getter
+    @Setter
     private Double ndricimiHelper;
+
+    @Getter
+    @Setter
+    private Double ambientiHelper;
 
     @Getter
     @Setter
@@ -47,6 +56,14 @@ public class SimulimiSchedule {
     @Getter
     @Setter
     private Double ndricimiMin = 30.0;
+
+    @Getter
+    @Setter
+    private Double ambientiMax = 70.0;
+
+    @Getter
+    @Setter
+    private Double ambientiMin = 30.0;
 
     @Autowired
     private MessageManager messageManager;
@@ -113,6 +130,38 @@ public class SimulimiSchedule {
             }
 
         }
+    }
+
+    @Scheduled(fixedDelay = 1000)
+    public void getAmbientiSimulimi(){
+//        if(started){
+//            if(ambientiHelper == null){
+//                ambientiHelper = ambientiMin;
+//            }
+//
+//            ambientiHelper -=2;
+//            senzorLogService.create(4l,ambientiHelper);
+//
+//            dashboardDTO.setAmbienti(ambientiHelper);
+//
+//            //////////////////////////////////
+//
+//
+//
+//
+//            messageManager.sendMessageDashboard(dashboardDTO);
+//
+//            Konfigurimi konfigurimi = konfigurimiService.getOne(3l);
+//
+//            if(ndricimiHelper > konfigurimi.getVleraMax()){
+//                pajisjaService.ndalo(4l);
+//                ndricimiHelper = -2.0;
+//            }else if(ndricimiHelper < konfigurimi.getVleraMin()){
+//                pajisjaService.aktivizo(4l);
+//                ndricimiHelper +=1.0;
+//            }
+//
+//        }
     }
 
     @Scheduled(fixedDelay = 3000)

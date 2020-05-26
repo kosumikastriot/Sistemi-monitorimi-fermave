@@ -28,4 +28,9 @@ public class SimulimiController {
         return ResponseEntity.ok().body(simulimiService.simuloNdricimin(min,max));
     }
 
+    @PostMapping("/ambienti")
+    public ResponseEntity simuloAmbientin(@RequestParam(value = "min", required = false) Double min, @RequestParam(value = "max", required = false) Double max){
+        return ResponseEntity.ok().body(simulimiService.simuloAmbientin(min,max));
+    }
+
 }
