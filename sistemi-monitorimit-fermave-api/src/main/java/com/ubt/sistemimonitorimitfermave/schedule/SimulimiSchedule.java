@@ -82,7 +82,7 @@ public class SimulimiSchedule {
     public void getLageshtiaAjritSimulimi(){
         Double vleraLageshtiaAjritRandom = (Double) (Math.random()*100);
         dashboardDTO.setLageshtijaAjrit(vleraLageshtiaAjritRandom);
-        senzorLogService.create(2l,vleraLageshtiaAjritRandom);
+        //senzorLogService.create(2l,vleraLageshtiaAjritRandom);
         messageManager.sendMessageDashboard(dashboardDTO);
     }
 
