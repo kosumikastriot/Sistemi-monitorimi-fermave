@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SimulimiSchedule {
 
+    DashboardDTO dashboardDTO = new DashboardDTO();
 
     @Getter
     @Setter
@@ -30,6 +31,10 @@ public class SimulimiSchedule {
     @Setter
     private Double maxTemperatura = 50.0;
 
+    @Getter
+    @Setter
+    private Double vleraLageshtiaAjrit = 30.0;
+
     @Autowired
     private MessageManager messageManager;
 
@@ -42,6 +47,8 @@ public class SimulimiSchedule {
     @Autowired
     private PajisjaService pajisjaService;
 
+
+
     @Scheduled(fixedDelay = 1000)
     public void getTemperaturaSimulimi(){
         if (startedTemperatura){
@@ -50,7 +57,6 @@ public class SimulimiSchedule {
             }
             minHelpTemperatura += 0.2;
             senzorLogService.create(1l, minHelpTemperatura);
-            DashboardDTO dashboardDTO = new DashboardDTO();
             dashboardDTO.setTemperatura(minHelpTemperatura);
 
             messageManager.sendMessageDashboard(dashboardDTO);
@@ -70,6 +76,14 @@ public class SimulimiSchedule {
             }
         }
 
+    }
+
+    @Scheduled(fixedDelay = 3000)
+    public void getLageshtiaAjritSimulimi(){
+        Double vleraLageshtiaAjritRandom = (Double) (Math.random()*100);
+        dashboardDTO.setLageshtijaAjrit(vleraLageshtiaAjritRandom);
+        senzorLogService.create(2l,vleraLageshtiaAjritRandom);
+        messageManager.sendMessageDashboard(dashboardDTO);
     }
 
 }

@@ -22,4 +22,9 @@ public class SimulimiService {
 
         return true;
     }
+
+    public Object simuloLageshtiaAjrit(Double vlera){
+        simulimiSchedule.setVleraLageshtiaAjrit(vlera);
+        return true;
+    }
 }
