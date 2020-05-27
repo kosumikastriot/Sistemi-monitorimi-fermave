@@ -11,6 +11,10 @@ public class SimulimiService {
     SimulimiSchedule simulimiSchedule;
 
     public Boolean simuloTemeraturen(Double min, Double max) {
+        System.err.println("-----------------------------------------------------------------");
+        System.err.println("Min: " + min);
+        System.err.println("Max: " + max);
+        System.err.println("-----------------------------------------------------------------");
         simulimiSchedule.setMinHelpTemperatura(null);
         simulimiSchedule.setMinTemperatura(min);
         simulimiSchedule.setMaxTemperatura(max);
@@ -25,6 +29,7 @@ public class SimulimiService {
     }
 
     public Boolean simuloNdricimin(Double min, Double max){
+
         simulimiSchedule.setNdricimiHelper(null);
         simulimiSchedule.setNdricimiMax(max);
         simulimiSchedule.setNdricimiMin(min);
