@@ -65,7 +65,7 @@ public class KonfigurimiService {
     public Konfigurimi getOne(Long konfigurimiId){
         Konfigurimi konfigurimi = null;
         try {
-            Optional<Konfigurimi> optionalKonfigurimi = konfigurimiRepository.findById(1l);
+            Optional<Konfigurimi> optionalKonfigurimi = konfigurimiRepository.findById(konfigurimiId);
             if (optionalKonfigurimi.isPresent()){
                 konfigurimi = optionalKonfigurimi.get();
             }
